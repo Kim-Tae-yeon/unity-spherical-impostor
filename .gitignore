@@ -1,0 +1,7 @@
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*.tmp
+*~
+
+# Note: Unity .meta files are intentionally committed (GUID 보존).
