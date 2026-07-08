@@ -23,6 +23,8 @@ Amplify Impostors의 **Spherical 임포스터 런타임 매커니즘**을 Unity 
 
 roll 보정량은 (극에 가까운 정도) × (베이크 열 중심에서 벗어난 방위각)에 비례합니다. 경도선이 극에서 수렴하며 생기는 회전을 상쇄합니다.
 
+> 회전(roll) 공식을 쉽게 풀어쓴 설명: **[ROLL_EXPLAINED.md](ROLL_EXPLAINED.md)** (고등학교 수학 수준)
+
 ## 사용법
 
 ### 1) 셰이더
