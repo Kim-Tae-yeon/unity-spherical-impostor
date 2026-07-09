@@ -142,6 +142,7 @@ namespace CustomSphericalImpostor
         static bool TryComputeLocalBounds(GameObject root, out Bounds bounds)
         {
             bounds = new Bounds();
+            Bounds accBounds = new Bounds(); // 로컬 함수가 out 파라미터를 못 잡으므로 로컬 변수 사용
             bool has = false;
             Matrix4x4 w2l = root.transform.worldToLocalMatrix;
 
@@ -158,8 +159,8 @@ namespace CustomSphericalImpostor
                         (i & 2) == 0 ? -e.y : e.y,
                         (i & 4) == 0 ? -e.z : e.z);
                     Vector3 p = m.MultiplyPoint3x4(corner);
-                    if (!has) { bounds = new Bounds(p, Vector3.zero); has = true; }
-                    else bounds.Encapsulate(p);
+                    if (!has) { accBounds = new Bounds(p, Vector3.zero); has = true; }
+                    else accBounds.Encapsulate(p);
                 }
             }
 
@@ -168,6 +169,7 @@ namespace CustomSphericalImpostor
             foreach (var smr in root.GetComponentsInChildren<SkinnedMeshRenderer>())
                 Accumulate(smr.sharedMesh, smr.transform);
 
+            bounds = accBounds;
             return has;
         }
 
